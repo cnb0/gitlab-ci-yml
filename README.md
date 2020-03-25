@@ -48,7 +48,17 @@ Standard @socialgouv pipeline using [@socialgouv/helm-charts/app](https://github
 
 Customize `app.values.yml` with the [default helm chart values.yml](https://github.com/SocialGouv/helm-charts/blob/master/charts/app/values.yaml).
 
+You can also set these in gitlab-ci.yml `variables` :
+
+var                      | usage
+-------------------------|----------
+ENABLE_AZURE_DB          | enable Azure PG database
+TEST_DISABLED            | disable test job
+CODE_QUALITY_DISABLED    | disable lint job
+
 If you `ENABLE_AZURE_DB`, you need a secret `azure-pg-admin-user` in your cluster namespace `[app.name]-secret`
+
+Disabling test and lint is for debugging purpose
 
 # [.base_create_namespace_stage](./base_create_namespace_stage.yml)
 
