@@ -51,9 +51,9 @@
   variables:
     GIT_STRATEGY: none
     #
-    HELM_RENDER_ARGS: --set db.name=db_${CI_JOB_ID}
-      --set db.password=pass_${CI_JOB_ID}
-      --set db.user=user_${CI_JOB_ID}
+    HELM_RENDER_ARGS: --set db.name=db_${CI_PIPELINE_ID}
+      --set db.password=pass_${CI_PIPELINE_ID}
+      --set db.user=user_${CI_PIPELINE_ID}
     HELM_APPLY_ARGS: >-
       -l app=create-db-user
 
@@ -66,8 +66,8 @@
   variables:
     GIT_STRATEGY: none
     #
-    HELM_RENDER_ARGS: --set db.name=db_${CI_JOB_ID}
-      --set db.password=pass_${CI_JOB_ID}
-      --set db.user=user_${CI_JOB_ID}
+    HELM_RENDER_ARGS: --set db.name=db_${CI_PIPELINE_ID}
+      --set db.password=pass_${CI_PIPELINE_ID}
+      --set db.user=user_${CI_PIPELINE_ID}
     HELM_APPLY_ARGS: >-
       -l app=drop-db-user
