@@ -39,11 +39,11 @@
     - echo "$ helm just render ${CONTEXT} managed-pg ${HELM_RENDER_ARGS}"
     - helm just render ${CONTEXT} managed-pg ${HELM_RENDER_ARGS}
     #
-    - echo "===""
-    - echo "===""
+    - echo "==="
+    - echo "==="
     - cat .manifests/${CONTEXT}/job-migrate.yml
-    - echo "===""
-    - echo "===""
+    - echo "==="
+    - echo "==="
     - echo "=== Apply socialgouv/managed-pg in context ${CONTEXT} with \"${HELM_APPLY_ARGS}\""
     - echo "$ helm just apply ${CONTEXT} ${HELM_APPLY_ARGS} "
     - helm just apply ${CONTEXT} ${HELM_APPLY_ARGS}
