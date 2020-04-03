@@ -2,7 +2,7 @@
 
 .base_managed_pg:
   variables:
-    MANAGED_DB_HELM_CHART_VERSION: "4983f7fcc701c0bb129e72b4bb6d6643d95ad6b9"
+    MANAGED_DB_HELM_CHART_VERSION: "managed-db-fixes"
     K8S_NAMESPACE: "${KUBE_NAMESPACE}"
     CONTEXT: "${CI_PROJECT_NAME}-${CI_JOB_ID}" # context should be < 63 chars for k8s labels
   environment:
