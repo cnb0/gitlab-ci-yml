@@ -2,7 +2,6 @@
 
 .base_managed_pg:
   variables:
-    MANAGED_DB_HELM_CHART_VERSION: "managed-db-fixes"
     K8S_NAMESPACE: "${KUBE_NAMESPACE}"
     CONTEXT: "${CI_PROJECT_NAME}-${CI_JOB_ID}" # context should be < 63 chars for k8s labels
   environment:
@@ -26,14 +25,14 @@
     - echo "=== Install just plugin@2.8.0 ==="
     - curl -L https://github.com/SocialGouv/helm-charts/releases/download/v2.8.0/helm-just-linux-2.8.0.tgz | tar -C $(helm home) -xzv
     #
-    #- curl -L https://github.com/SocialGouv/helm-charts/releases/download/v${MANAGED_DB_HELM_CHART_VERSION}/helm-just-linux-${MANAGED_DB_HELM_CHART_VERSION}.tgz | tar -C $(helm home) -xzv
-    #- helm repo add socialgouv https://github.com/SocialGouv/helm-charts/releases/download/v${MANAGED_DB_HELM_CHART_VERSION}
+    #- curl -L https://github.com/SocialGouv/helm-charts/releases/download/v${HELM_CHART_VERSION}/helm-just-linux-${HELM_CHART_VERSION}.tgz | tar -C $(helm home) -xzv
+    #- helm repo add socialgouv https://github.com/SocialGouv/helm-charts/releases/download/v${HELM_CHART_VERSION}
     #
-    - echo "=== Checkout socialgouv/helm-charts@${MANAGED_DB_HELM_CHART_VERSION} ==="
-    - helm repo add socialgouv https://raw.githubusercontent.com/socialgouv/helm-charts/${MANAGED_DB_HELM_CHART_VERSION}
+    - echo "=== Checkout socialgouv/helm-charts@${HELM_CHART_VERSION} ==="
+    - helm repo add socialgouv https://raw.githubusercontent.com/socialgouv/helm-charts/${HELM_CHART_VERSION}
     #
-    - echo "=== Fetch socialgouv/managed-pg@${MANAGED_DB_HELM_CHART_VERSION} helm chart ==="
-    - helm just fetch socialgouv/managed-pg#${MANAGED_DB_HELM_CHART_VERSION}
+    - echo "=== Fetch socialgouv/managed-pg@${HELM_CHART_VERSION} helm chart ==="
+    - helm just fetch socialgouv/managed-pg#${HELM_CHART_VERSION}
     #
     - echo "=== Render socialgouv/managed-pg in context ${CONTEXT} with \"${HELM_RENDER_ARGS}\""
     - echo "$ helm just render ${CONTEXT} managed-pg ${HELM_RENDER_ARGS}"
