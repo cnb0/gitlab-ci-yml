@@ -43,12 +43,15 @@ variables:
 
     - echo "$ helm just render ${CONTEXT} app ${HELM_RENDER_ARGS} --values /tmp/values.socialgouv.yaml --values ./values.yaml"
 
-    - cat .manifests/${CONTEXT}/deployment.yaml
-    - cat .manifests/${CONTEXT}/ingress.yaml
-    - cat .manifests/${CONTEXT}/service.yaml
-
     - helm just render ${CONTEXT} app
       --values /tmp/values.socialgouv.yaml
       --values ./values.yaml
       ${HELM_RENDER_ARGS}
+
+    - cat /tmp/values.socialgouv.yaml
+    - cat ./values.yaml
+    - cat .manifests/${CONTEXT}/deployment.yaml
+    - cat .manifests/${CONTEXT}/ingress.yaml
+    - cat .manifests/${CONTEXT}/service.yaml
+
     - helm just apply ${CONTEXT}
