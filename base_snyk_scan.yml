@@ -5,7 +5,7 @@
 #
 
 .base_snyk_scan:
-  image: snyk/snyk-cli:1.305.0-docker
+  image: node:12-alpine
   services:
     - docker:$DOCKER_VERSION-dind
   dependencies: []
@@ -16,4 +16,6 @@
   script:
     - echo "$CI_JOB_TOKEN" | docker login $CI_REGISTRY -u gitlab-ci-token --password-stdin
     - docker pull $IMAGE
-    - snyk test --org=socialgouv --docker $IMAGE --file=./Dockerfile
+    - docker run --rm snyk/snyk-cli:1.305.0-docker snyk test --org=socialgouv --docker $IMAGE --file=./Dockerfile
+    - yarn --frozen-lockfile --production
+    - docker run --rm snyk/snyk-cli:1.305.0-docker snyk test --org=socialgouv --file=package.json
